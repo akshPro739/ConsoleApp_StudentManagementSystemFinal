@@ -1,0 +1,21 @@
+﻿using ConsoleApp_StudentManagementSystem.Models;
+
+namespace ConsoleApp_StudentManagementSystem.Services
+{
+    public interface IStudentService
+    {
+        IEnumerable<Student> GetAllStudents();
+
+        Student GetStudentById(int id);
+
+        void AddStudent(Student student);
+
+        void UpdateStudent(Student student);
+
+        void DeleteStudent(int id);
+
+        Student GetStudentByUserId(int userId);
+
+       
+    }
+}

@@ -1,0 +1,78 @@
+﻿@model ConsoleApp_StudentManagementSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h2>Edit Student</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input asp-for="Id" type="hidden" />
+
+    <input asp-for="RollNumber" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name"
+               class="form-control" />
+        <span asp-validation-for="Name"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Maths"></label>
+        <input asp-for="Maths"
+               class="form-control" />
+        <span asp-validation-for="Maths"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Physics"></label>
+        <input asp-for="Physics"
+               class="form-control" />
+        <span asp-validation-for="Physics"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Chemistry"></label>
+        <input asp-for="Chemistry"
+               class="form-control" />
+        <span asp-validation-for="Chemistry"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="English"></label>
+        <input asp-for="English"
+               class="form-control" />
+        <span asp-validation-for="English"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Programming"></label>
+        <input asp-for="Programming"
+               class="form-control" />
+        <span asp-validation-for="Programming"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-success">
+        Update
+    </button>
+
+    <a asp-action="List"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

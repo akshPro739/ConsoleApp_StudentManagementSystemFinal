@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ConsoleApp_StudentManagementSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<h2>Student List</h2>
+
+<p>
+    <a asp-action="Create"
+       class="btn btn-primary">
+        Add Student
+    </a>
+</p>
+
+
+<form asp-action="List"
+      method="get">
+
+    <div class="input-group mb-3">
+
+        <input type="text"
+               name="searchTerm"
+               value="@ViewBag.SearchTerm"
+               class="form-control"
+               placeholder="Search Student" />
+
+        <button class="btn btn-primary"
+                type="submit">
+            Search
+        </button>
+
+    </div>
+
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Maths</th>
+            <th>Physics</th>
+            <th>Chemistry</th>
+            <th>English</th>
+            <th>Programming</th>
+            <th>Total Marks</th>
+            <th>Percentage</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RollNumber</td>
+                <td>@item.Name</td>
+                <td>@item.Maths</td>
+                <td>@item.Physics</td>
+                <td>@item.Chemistry</td>
+                <td>@item.English</td>
+                <td>@item.Programming</td>
+                <td>@item.TotalMarks</td>
+                <td>@item.Percentage %</td>
+
+                <td>
+
+                    <a asp-action="Details"
+                       asp-route-id="@item.Id"
+                       class="btn btn-info btn-sm">
+                        View
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id"
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Delete Student ?')">
+                        Delete
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
