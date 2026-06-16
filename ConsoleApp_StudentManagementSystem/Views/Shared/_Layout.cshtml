@@ -71,11 +71,14 @@
                     </ul>
 
                     <div class="d-flex">
-                        <a asp-controller="Account"
-                           asp-action="Logout"
-                           class="btn btn-danger">
-                            Logout
-                        </a>
+                        @if (Context.Request.Cookies["UserId"] != null)
+                        {
+                            <a asp-controller="Account"
+                               asp-action="Logout"
+                               class="btn btn-danger">
+                                Logout
+                            </a>
+                        }
                     </div>
                 </div>
             </div>
