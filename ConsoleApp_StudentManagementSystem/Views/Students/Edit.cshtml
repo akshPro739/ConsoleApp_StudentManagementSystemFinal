@@ -6,8 +6,9 @@
 
 <h2>Edit Student</h2>
 
-<form asp-action="Edit" method="post">
+<form id="editForm">
 
+    ```
     <input asp-for="Id" type="hidden" />
 
     <input asp-for="RollNumber" type="hidden" />
@@ -60,7 +61,8 @@
               class="text-danger"></span>
     </div>
 
-    <button type="submit"
+    <button type="button"
+            id="btnUpdate"
             class="btn btn-success">
         Update
     </button>
@@ -69,10 +71,51 @@
        class="btn btn-secondary">
         Back
     </a>
+    ```
 
 </form>
 
 @section Scripts
 {
     <partial name="_ValidationScriptsPartial" />
+
+    ```
+    <script>
+
+        $("#btnUpdate").click(function () {
+
+            $.ajax({
+
+                url: '/Students/UpdateMarksAjax',
+
+                type: 'POST',
+
+                data: $("#editForm").serialize(),
+
+                success: function (response) {
+
+                    alert(response.message);
+
+                    if (response.success) {
+
+                        window.location.href =
+                            '/Students/List';
+                    }
+                },
+
+                error: function () {
+
+                    alert("Error updating record");
+                }
+
+            });
+
+        });
+
+    </script>
+    ```
+
 }
+
+
+

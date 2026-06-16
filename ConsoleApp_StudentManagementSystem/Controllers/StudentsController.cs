@@ -200,6 +200,29 @@ namespace ConsoleApp_StudentManagementSystem.Controllers
 
             return View(student);
         }
+
+        [HttpPost]
+        public JsonResult UpdateMarksAjax(Student student)
+        {
+            try
+            {
+                _studentService.UpdateStudent(student);
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Marks updated successfully"
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Update failed"
+                });
+            }
+        }
     }
 }
 
